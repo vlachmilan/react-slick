@@ -461,6 +461,11 @@ export class InnerSlider extends React.Component {
       listRef: this.list,
       slideIndex: this.state.currentSlide
     });
+
+    if (this.props.onSwipeMove) {
+      this.props.onSwipeMove();
+    }
+
     if (!state) return;
     if (state["swiping"]) {
       this.clickable = false;

@@ -6,7 +6,8 @@ export default class SimpleSlider extends Component {
     super(props);
 
     this.state = {
-      dragging: false
+      dragging: false,
+      moving: false
     };
   }
 
@@ -16,14 +17,21 @@ export default class SimpleSlider extends Component {
     });
   }
 
+  onSwipeMove() {
+    this.setState({
+      moving: true
+    });
+  }
+
   onSwipeEnd() {
     this.setState({
-      dragging: false
+      dragging: false,
+      moving: false
     });
   }
 
   render() {
-    const { dragging } = this.state;
+    const { dragging, moving } = this.state;
     const settings = {
       dots: true,
       infinite: true,
@@ -57,6 +65,7 @@ export default class SimpleSlider extends Component {
           </div>
         </Slider>
         <p>{dragging ? "dragging" : "not dragging"}</p>
+        <p>{moving ? "moving" : "not moving"}</p>
       </div>
     );
   }
